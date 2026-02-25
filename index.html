@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ignacio Gutierrez | Computer Science Student</title>
+  <style>
+    :root {
+      --hero-dark-1: #25313a;
+      --hero-dark-2: #2f3e49;
+      --hero-dark-3: #344651;
+      --shape-1: #22303a;
+      --shape-2: #2a3943;
+      --shape-3: #31434e;
+      --shape-4: #3b4f5b;
+      --page-bg: #ececec;
+      --text: #444;
+      --heading: #333;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      background: var(--page-bg);
+      color: var(--text);
+    }
+
+    /* Small top-left note */
+    .top-note {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      z-index: 5;
+      color: #f1f1f1;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.1px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 70% 40%, rgba(255,255,255,0.04), transparent 45%),
+        linear-gradient(120deg, var(--hero-dark-1), var(--hero-dark-2) 55%, var(--hero-dark-3));
+    }
+
+    /* Geometric faceted background (approximation of screenshot) */
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      background:
+        linear-gradient(60deg, transparent 0 28%, rgba(255,255,255,0.03) 28% 29%, transparent 29% 100%),
+        linear-gradient(-65deg, transparent 0 58%, rgba(255,255,255,0.03) 58% 59%, transparent 59% 100%);
+      opacity: 0.7;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.95;
+      filter: saturate(0.9);
+    }
+
+    .s1 {
+      left: -3%;
+      top: -10%;
+      width: 34%;
+      height: 130%;
+      background: var(--shape-1);
+      clip-path: polygon(0 0, 70% 0, 94% 45%, 74% 100%, 0 100%, 18% 48%);
+    }
+
+    .s2 {
+      left: 16%;
+      top: -8%;
+      width: 20%;
+      height: 125%;
+      background: var(--shape-2);
+      clip-path: polygon(18% 0, 100% 0, 65% 55%, 100% 100%, 0 100%, 38% 46%);
+      opacity: 0.85;
+    }
+
+    .s3 {
+      left: 40%;
+      top: -5%;
+      width: 36%;
+      height: 120%;
+      background: var(--shape-3);
+      clip-path: polygon(8% 0, 100% 0, 76% 100%, 0 100%, 24% 42%);
+      opacity: 0.72;
+    }
+
+    .s4 {
+      right: -2%;
+      top: -6%;
+      width: 24%;
+      height: 124%;
+      background: var(--shape-4);
+      clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%, 36% 42%);
+      opacity: 0.75;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1250px;
+      margin: 0 auto;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 110px;
+      padding: 36px 40px 30px;
+    }
+
+    .profile-photo {
+      width: 280px;
+      height: 350px;
+      object-fit: cover;
+      display: block;
+      border: none;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
+      background: #ddd;
+    }
+
+    .hero-text {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--white);
+      min-width: 420px;
+    }
+
+    .hero-text h1 {
+      margin: 0;
+      font-size: 64px;
+      line-height: 1.02;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .hero-text h2 {
+      margin: 20px 0 0;
+      font-size: 30px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .hero-text .email {
+      margin-top: 24px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      opacity: 0.96;
+    }
+
+    .content {
+      background: var(--page-bg);
+      padding: 18px 0 44px;
+    }
+
+    .content-inner {
+      width: min(840px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      color: var(--heading);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: underline;
+      letter-spacing: 0;
+    }
+
+    .content p {
+      margin: 0 0 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #4a4a4a;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-inner {
+        gap: 50px;
+      }
+      .hero-text h1 { font-size: 48px; }
+      .hero-text h2 { font-size: 24px; }
+      .profile-photo { width: 240px; height: 300px; }
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        min-height: auto;
+      }
+      .hero-inner {
+        min-height: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+        padding-top: 42px;
+        padding-bottom: 32px;
+      }
+      .hero-text {
+        margin-top: 0;
+        min-width: auto;
+      }
+      .hero-text h1 { font-size: 40px; }
+      .hero-text h2 { font-size: 22px; margin-top: 12px; }
+      .hero-text .email { margin-top: 14px; }
+      .profile-photo {
+        width: min(76vw, 280px);
+        height: auto;
+        aspect-ratio: 4 / 5;
+      }
+      .top-note {
+        font-size: 13px;
+        left: 8px;
+        top: 6px;
+      }
+      .content-inner {
+        width: min(840px, calc(100% - 28px));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="top-note">Ignacio Gutierrez Revised Feb 2026</div>
+
+    <!-- Faceted shapes -->
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+    <div class="shape s3"></div>
+    <div class="shape s4"></div>
+
+    <div class="hero-inner">
+      <!-- Replace with the actual portrait file -->
+      <img
+        class="profile-photo"
+        src="ignacio.jpg"
+        alt="Ignacio Gutierrez portrait"
+      />
+
+      <div class="hero-text">
+        <h1>Ignacio Gutierrez</h1>
+        <h2>Computer Science Student</h2>
+        <div class="email">gutierrezi9604@uhcl.edu</div>
+      </div>
+    </div>
+  </div>
+
+  <main class="content">
+    <div class="content-inner">
+      <h3 class="section-title">Summary</h3>
+      <p>
+       Computer Science junior at the University of Houston–Clear Lake (UHCL) with strong academic and hands-on
+       experience in software engineering, data structures and algorithms, database systems, and digital logic
+       design. Currently building technical projects focused on Linux administration, networking, and self-hosted
+       services, including a Raspberry Pi home lab with Docker, Pi-hole, Tailscale, SSH, and server hardening.
+       Proficient in Python, C++, SQL/MySQL, Linux command-line tools, Git/GitHub, and VHDL, with experience
+       creating technical documentation, UML diagrams, and project deliverables for coursework and portfolio
+       development. Background in customer-facing support, product/service coordination, and job-site material
+       ordering. Actively pursuing internship opportunities in software engineering, IT, and systems-focused roles.
+      </p>
+
+      <h3 class="section-title">Professional Philosophy</h3>
+      <p>
+   As a computer science student and aspiring software engineer, I have to make sure that every line of code, every document, and every explanation I produce is created with the audience in mind. Stephen R. Covey’s advice to “seek first to understand, then to be understood” reminds me that effective communication begins with understanding the people I am trying to reach. I know how quickly I can lose focus when I am working on technical projects because ideas come fast and can pull me away from the original goal. A feature idea turns into another feature, then a redesign, and suddenly I am no longer thinking about the user, teammate, or professor who has to understand my work. That is why I give my work incubation time—I step away from it and return later with a clear mind so I can review it more objectively. In my role as a UHCL computer science student, I write for different audiences: professors grading assignments, classmates collaborating on projects, and future employers reviewing my portfolio. Reaching each audience requires clarity, structure, tone, formatting, comments, examples, and precision. Whether I am documenting a Raspberry Pi project, designing a database schema, or explaining an algorithm, there is no room for carelessness, and that effort is far from easy. As Harold Abelson and Gerald Jay Sussman remind programmers, “programs must be written for people to read, and only incidentally for machines to execute.”
+      </p>
+
+      <h3 class="section-title">Why a Career in Computer Science?</h3>
+      <p>
+     When I chose to pursue a bachelor’s degree in Computer Science at the University of Houston–Clear Lake, I realized I wanted to build, solve problems, and work with technology in a hands-on way. I was driven by curiosity and ambition, and I knew that growth in this field would depend on persistence as much as talent. As I continue balancing school, projects, and career preparation, I have found that real opportunities come from staying consistent and being willing to learn. My experiences in coursework, technical projects, and self-directed learning have shown me that progress is built step by step. I am building skills in software engineering, databases, Linux systems, and networking, while also developing the discipline to communicate and document my work clearly. My story reflects the idea that passion works best when paired with effort. For students navigating their own choices, I would say that a major is not just a label—it is a starting point. What matters most is how you grow through it and the path you create from it.
+      </p>
+    </div>
+  </main>
+</body>
+</html>
